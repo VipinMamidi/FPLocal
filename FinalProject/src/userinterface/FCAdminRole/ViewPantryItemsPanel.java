@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.FCPantry.FCPantryItems;
 import Business.FCPantry.FCPantryItemsDirectory;
 import Business.UserAccount.UserAccount;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,14 +36,17 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
     UserAccount userAcc;
     FCPantryItemsDirectory fcpid;
     String FCPname;
-    public ViewPantryItemsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
+
+    public ViewPantryItemsPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
         populatePantryItemsTable();
         //FCPname = ecosystem.getFCPDirectory()
+        viewPanel.setVisible(false);
         setBG();
+        makeTableTransparent();
     }
 
     /**
@@ -58,26 +63,31 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
         tblitems = new javax.swing.JTable();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        lblWHname = new javax.swing.JLabel();
-        txtWHname = new javax.swing.JTextField();
-        lblFCPname = new javax.swing.JLabel();
-        txtFCPname = new javax.swing.JTextField();
-        lblFCPmg = new javax.swing.JLabel();
-        txtFCPmg = new javax.swing.JTextField();
-        lblFDitem = new javax.swing.JLabel();
+        viewPanel = new javax.swing.JPanel();
         txtFDitem = new javax.swing.JTextField();
-        lblFDitem1 = new javax.swing.JLabel();
-        txtItemquan = new javax.swing.JTextField();
-        btnUpdate = new javax.swing.JButton();
-        lblitemId = new javax.swing.JLabel();
+        txtFCPmg = new javax.swing.JTextField();
+        lblWHname = new javax.swing.JLabel();
+        txtFCPname = new javax.swing.JTextField();
         lblitemId1 = new javax.swing.JLabel();
+        txtItemquan = new javax.swing.JTextField();
+        txtWHname = new javax.swing.JTextField();
+        lblFDitem = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
+        lblFCPmg = new javax.swing.JLabel();
+        lblFCPname = new javax.swing.JLabel();
+        lblitemId = new javax.swing.JLabel();
+        lblFDitem1 = new javax.swing.JLabel();
+        Cancel = new javax.swing.JButton();
         LabelImg = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(null);
 
-        lblAddWHTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblAddWHTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblAddWHTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblAddWHTitle.setText("View/Modify Pantry Items");
-        add(lblAddWHTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 6, -1, -1));
+        add(lblAddWHTitle);
+        lblAddWHTitle.setBounds(320, 20, 410, 34);
 
         tblitems.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,9 +100,15 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 "Item Id", "Warehouse Name", "Pantry Name", "Pantry Manager", "Food Item", "Item Quantity"
             }
         ));
+        tblitems.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblitemsMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblitems);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 1140, 153));
+        add(jScrollPane1);
+        jScrollPane1.setBounds(0, 80, 1140, 153);
 
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +116,8 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 btnEditActionPerformed(evt);
             }
         });
-        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 220, 92, -1));
+        add(btnEdit);
+        btnEdit.setBounds(960, 260, 92, 29);
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -108,65 +125,11 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 220, 92, -1));
+        add(btnDelete);
+        btnDelete.setBounds(1050, 260, 92, 29);
 
-        lblWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHname.setText("Warehouse Name");
-        add(lblWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 258, -1, -1));
-
-        txtWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtWHname.setPreferredSize(new java.awt.Dimension(150, 25));
-        txtWHname.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtWHnameFocusLost(evt);
-            }
-        });
-        txtWHname.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtWHnameKeyReleased(evt);
-            }
-        });
-        add(txtWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 254, 137, -1));
-
-        lblFCPname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFCPname.setText("Pantry Name");
-        add(lblFCPname, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 301, -1, -1));
-
-        txtFCPname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtFCPname.setPreferredSize(new java.awt.Dimension(150, 25));
-        txtFCPname.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFCPnameFocusLost(evt);
-            }
-        });
-        txtFCPname.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFCPnameKeyReleased(evt);
-            }
-        });
-        add(txtFCPname, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 297, 137, -1));
-
-        lblFCPmg.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFCPmg.setText("Pantry Manager");
-        add(lblFCPmg, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 344, -1, -1));
-
-        txtFCPmg.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtFCPmg.setPreferredSize(new java.awt.Dimension(150, 25));
-        txtFCPmg.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFCPmgFocusLost(evt);
-            }
-        });
-        txtFCPmg.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFCPmgKeyReleased(evt);
-            }
-        });
-        add(txtFCPmg, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 340, 137, -1));
-
-        lblFDitem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFDitem.setText("Food Item");
-        add(lblFDitem, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 387, -1, -1));
+        viewPanel.setOpaque(false);
+        viewPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtFDitem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFDitem.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -180,11 +143,42 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 txtFDitemKeyReleased(evt);
             }
         });
-        add(txtFDitem, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 383, 137, -1));
+        viewPanel.add(txtFDitem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 137, -1));
 
-        lblFDitem1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFDitem1.setText("Item Quantity");
-        add(lblFDitem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 430, -1, -1));
+        txtFCPmg.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtFCPmg.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtFCPmg.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFCPmgFocusLost(evt);
+            }
+        });
+        txtFCPmg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFCPmgKeyReleased(evt);
+            }
+        });
+        viewPanel.add(txtFCPmg, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 137, -1));
+
+        lblWHname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblWHname.setText("Warehouse Name :");
+        viewPanel.add(lblWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
+        txtFCPname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtFCPname.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtFCPname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFCPnameFocusLost(evt);
+            }
+        });
+        txtFCPname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFCPnameKeyReleased(evt);
+            }
+        });
+        viewPanel.add(txtFCPname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 137, -1));
+
+        lblitemId1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        viewPanel.add(lblitemId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 130, 20));
 
         txtItemquan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtItemquan.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -198,26 +192,67 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 txtItemquanKeyReleased(evt);
             }
         });
-        add(txtItemquan, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 426, 137, -1));
+        viewPanel.add(txtItemquan, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 137, -1));
 
+        txtWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtWHname.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtWHname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtWHnameFocusLost(evt);
+            }
+        });
+        txtWHname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtWHnameKeyReleased(evt);
+            }
+        });
+        viewPanel.add(txtWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 137, -1));
+
+        lblFDitem.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblFDitem.setText("Food Item :");
+        viewPanel.add(lblFDitem, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+
+        btnUpdate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 483, 92, -1));
+        viewPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 92, -1));
 
-        lblitemId.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblitemId.setText("Selected Item Id:");
-        add(lblitemId, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 218, -1, -1));
+        lblFCPmg.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblFCPmg.setText("Pantry Manager :");
+        viewPanel.add(lblFCPmg, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
-        lblitemId1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        add(lblitemId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 218, -1, -1));
-        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1590, 790));
+        lblFCPname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblFCPname.setText("Pantry Name :");
+        viewPanel.add(lblFCPname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+
+        lblitemId.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblitemId.setText("Item Id :");
+        viewPanel.add(lblitemId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
+
+        lblFDitem1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblFDitem1.setText("Item Quantity :");
+        viewPanel.add(lblFDitem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+
+        Cancel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        Cancel.setText("Cancel");
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
+        viewPanel.add(Cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 90, -1));
+
+        add(viewPanel);
+        viewPanel.setBounds(140, 250, 450, 410);
+        add(LabelImg);
+        LabelImg.setBounds(0, 0, 3220, 950);
     }// </editor-fold>//GEN-END:initComponents
 
-     public void setBG() {
+    public void setBG() {
         try {
             LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
             LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
@@ -225,22 +260,38 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
 
             Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
 
-            Image newimg = img.getScaledInstance(1650, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
             LabelImg.setIcon(new ImageIcon(newimg));
         } catch (IOException ex) {
-            Logger.getLogger(ViewPantryItemsPanel.class.getName()).log(Level.SEVERE, null, ex);
+
         }
     }
-     
+
+    public void makeTableTransparent() {
+        tblitems.setOpaque(false);
+        ((DefaultTableCellRenderer) tblitems.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblitems.setShowGrid(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(Color.WHITE);
+
+        for (int i = 0; i < tblitems.getModel().getColumnCount(); i++) {
+            tblitems.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+    }
+
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblitems.getSelectedRow();
-        if(selectedRowIndex < 0){
+        if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a record to Edit");
             return;
         }
+        viewPanel.setVisible(true);
         DefaultTableModel model = (DefaultTableModel) tblitems.getModel();
-        FCPantryItems selectedFCPI = (FCPantryItems)model.getValueAt(selectedRowIndex, 0);
+        FCPantryItems selectedFCPI = (FCPantryItems) model.getValueAt(selectedRowIndex, 0);
         lblitemId1.setText(selectedFCPI.getFcpitemid());
         txtWHname.setText(selectedFCPI.getFcpWHname());
         txtFCPname.setText(selectedFCPI.getPantryName());
@@ -252,12 +303,12 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblitems.getSelectedRow();
-        if(selectedRowIndex < 0){
+        if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a record to delete");
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblitems.getModel();
-        FCPantryItems selectedFCPI = (FCPantryItems)model.getValueAt(selectedRowIndex, 0);
+        FCPantryItems selectedFCPI = (FCPantryItems) model.getValueAt(selectedRowIndex, 0);
         /* // First delete the customer from employee
         this.system.getEmployeeDirectory().deleteEmployee(selectedRest.getResManagerName());
         // And thne delete the userAccount
@@ -267,7 +318,7 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
         );
         // finally delete the user from customer directory*/
         //  ecosystem.getFCPDirectory().deleteFCPantry(selectedFCP);
-        fcpid= ecosystem.getFCPIDirectory();
+        fcpid = ecosystem.getFCPIDirectory();
         fcpid.deleteFCPItems(selectedFCPI);
         ecosystem.setFCPIDirectory(fcpid);
         JOptionPane.showMessageDialog(this, "Pantry Item deleted Successfully");
@@ -276,10 +327,9 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
 
     private void txtWHnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWHnameFocusLost
         // TODO add your handling code here:
-        if(!(txtWHname.getText().matches("^[a-zA-Z]*$"))){
+        if (!(txtWHname.getText().matches("^[a-zA-Z]*$"))) {
             lblFCPmg.setText("Invalid input. Please enter only alphabets");
-        }
-        else{
+        } else {
             lblFCPmg.setText("");
         }
     }//GEN-LAST:event_txtWHnameFocusLost
@@ -323,17 +373,15 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblitems.getSelectedRow();
-        if(selectedRowIndex < 0){
+        if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a record to update");
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblitems.getModel();
-        String FCPid=lblitemId1.getText();
+        String FCPid = lblitemId1.getText();
         ArrayList<FCPantryItems> fcpiList = ecosystem.getFCPIDirectory().getFcpiList();
-        for(FCPantryItems f: fcpiList)
-        {
-            if(f.getFcpitemid().equals(FCPid))
-            {
+        for (FCPantryItems f : fcpiList) {
+            if (f.getFcpitemid().equals(FCPid)) {
                 f.setFcpWHname(txtWHname.getText());
                 f.setPantryName(txtFCPname.getText());
                 f.setPantryManager(txtFCPmg.getText());
@@ -345,15 +393,27 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 //f.setFcpAccount(FCPua);
             }
 
-        } 
+        }
         // ecosystem.setFCWDirectory(fcwList);
         JOptionPane.showMessageDialog(this, "Pantry Item details updated successfully");
         clearfields();
         populatePantryItemsTable();
+        viewPanel.setVisible(false);
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+        // TODO add your handling code here:
+       viewPanel.setVisible(false);
+    }//GEN-LAST:event_CancelActionPerformed
+
+    private void tblitemsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblitemsMousePressed
+        // TODO add your handling code here:
+        tblitems.setSelectionForeground(Color.BLUE);
+    }//GEN-LAST:event_tblitemsMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancel;
     private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
@@ -373,21 +433,22 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtFDitem;
     private javax.swing.JTextField txtItemquan;
     private javax.swing.JTextField txtWHname;
+    private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
 
     private void populatePantryItemsTable() {
-         DefaultTableModel model = (DefaultTableModel) tblitems.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblitems.getModel();
         model.setRowCount(0);
-        for(FCPantryItems fcpi: ecosystem.getFCPIDirectory().getFcpiList()){
-           Object[] row = new Object[6];
-           row[0] =fcpi;
-           row[1] =fcpi.getFcpWHname();
-           row[2] =fcpi.getPantryName();
-           row[3] =fcpi.getPantryManager();
-           row[4] =fcpi.getFoodItem();
-           row[5] =fcpi.getFoodQuan();
-           model.addRow(row);
-        } 
+        for (FCPantryItems fcpi : ecosystem.getFCPIDirectory().getFcpiList()) {
+            Object[] row = new Object[6];
+            row[0] = fcpi;
+            row[1] = fcpi.getFcpWHname();
+            row[2] = fcpi.getPantryName();
+            row[3] = fcpi.getPantryManager();
+            row[4] = fcpi.getFoodItem();
+            row[5] = fcpi.getFoodQuan();
+            model.addRow(row);
+        }
     }
 
     private void clearfields() {

@@ -12,10 +12,17 @@ import Business.NGOVolunteer.VolRequestsDirectory;
 import Business.NGOVolunteer.Volunteer;
 import Business.NGOVolunteer.VolunteerDirectory;
 import Business.UserAccount.UserAccount;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -52,8 +59,13 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
                 WHname=fcw.getFcwName();
             }
         }
+
         lblq.setVisible(false);
         cbQ.setVisible(false);
+
+        setBG();
+        makeTableTransparent();
+
     }
 
     /**
@@ -74,8 +86,12 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
         btnReq = new javax.swing.JButton();
         lblq1 = new javax.swing.JLabel();
         cbV = new javax.swing.JComboBox<>();
+        LabelImg = new javax.swing.JLabel();
 
-        lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        lblDonProfileTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblDonProfileTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle.setText("Manage Volunteers");
 
         tblVolunteer.setModel(new javax.swing.table.DefaultTableModel(
@@ -89,12 +105,19 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
                 "Volunteer Id", "Name", "Phone Number", "Address", "City", "Zipcode", "Available?"
             }
         ));
+        tblVolunteer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblVolunteerMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblVolunteer);
 
-        lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        lblDonProfileTitle1.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle1.setText("Request Volunteers");
 
-        lblq.setText("Number of Volunteers Required");
+        lblq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblq.setText("Number of Volunteers Required :");
 
         cbQ.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbQ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-select-", "1", "2", "3", "4", "5" }));
@@ -106,7 +129,8 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
             }
         });
 
-        lblq1.setText("Select a NGO");
+        lblq1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblq1.setText("Select a NGO :");
 
         cbV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -114,52 +138,87 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1427, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(396, 396, 396)
-                        .addComponent(lblDonProfileTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(403, 403, 403)
-                        .addComponent(lblDonProfileTitle1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(399, 399, 399)
-                        .addComponent(btnReq))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblq)
-                            .addComponent(lblq1))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(411, Short.MAX_VALUE))
+                .addGap(410, 410, 410)
+                .addComponent(lblDonProfileTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(492, 492, 492)
+                .addComponent(cbV, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(374, 374, 374)
+                .addComponent(lblq1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(396, 396, 396)
+                .addComponent(lblDonProfileTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(258, 258, 258)
+                .addComponent(lblq))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(480, 480, 480)
+                .addComponent(btnReq))
+            .addComponent(LabelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 1430, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(492, 492, 492)
+                .addComponent(cbQ, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(lblDonProfileTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(80, 80, 80)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(lblDonProfileTitle1)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblq1)
-                    .addComponent(cbV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblq)
-                    .addComponent(cbQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(btnReq)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addComponent(lblDonProfileTitle1)
+                .addGap(31, 31, 31)
+                .addComponent(cbV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(316, 316, 316)
+                .addComponent(lblq1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(366, 366, 366)
+                .addComponent(cbQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(lblDonProfileTitle))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(370, 370, 370)
+                .addComponent(lblq))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(420, 420, 420)
+                .addComponent(btnReq))
+            .addComponent(LabelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+        public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+
+        }
+    }
+
+    public void makeTableTransparent() {
+        tblVolunteer.setOpaque(false);
+        ((DefaultTableCellRenderer) tblVolunteer.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblVolunteer.setShowGrid(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(Color.WHITE);
+
+        for (int i = 0; i < tblVolunteer.getModel().getColumnCount(); i++) {
+            tblVolunteer.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+    }
     private void btnReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReqActionPerformed
         // TODO add your handling code here:
         VolRequests vr = new VolRequests();
@@ -174,8 +233,14 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Your request has been sent to NGO");
     }//GEN-LAST:event_btnReqActionPerformed
 
+    private void tblVolunteerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVolunteerMousePressed
+        // TODO add your handling code here:
+        tblVolunteer.setSelectionForeground(Color.BLUE);
+    }//GEN-LAST:event_tblVolunteerMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnReq;
     private javax.swing.JComboBox<String> cbQ;
     private javax.swing.JComboBox<String> cbV;

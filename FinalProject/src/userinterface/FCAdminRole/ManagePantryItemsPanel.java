@@ -98,17 +98,19 @@ public class ManagePantryItemsPanel extends javax.swing.JPanel {
 
         FCWorkareaPanel.setPreferredSize(new java.awt.Dimension(840, 600));
 
+        LabelImg.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout FCWorkareaPanelLayout = new javax.swing.GroupLayout(FCWorkareaPanel);
         FCWorkareaPanel.setLayout(FCWorkareaPanelLayout);
         FCWorkareaPanelLayout.setHorizontalGroup(
             FCWorkareaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 1424, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FCWorkareaPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(LabelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 1470, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         FCWorkareaPanelLayout.setVerticalGroup(
             FCWorkareaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FCWorkareaPanelLayout.createSequentialGroup()
-                .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(LabelImg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
         );
 
         SplitPaneFCP.setRightComponent(FCWorkareaPanel);
@@ -117,7 +119,7 @@ public class ManagePantryItemsPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneFCP, javax.swing.GroupLayout.DEFAULT_SIZE, 1600, Short.MAX_VALUE)
+            .addComponent(SplitPaneFCP, javax.swing.GroupLayout.DEFAULT_SIZE, 1646, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
