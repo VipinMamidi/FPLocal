@@ -194,7 +194,7 @@ public class RequestsPanel extends javax.swing.JPanel {
         }
         DefaultTableModel model = (DefaultTableModel) tblV.getModel();
         Volunteer selectedV = (Volunteer)model.getValueAt(selectedRowIndex, 0);
-        if(selectedV.getVolAvail().equals("New")){
+        if(selectedV.getVolAvail().equals("New") || selectedV.getVolAvail().equals("No")){
         selectedV.setVolAvail("Yes");
         String reqidval=lblR.getText();
         for(VolRequests vr: ecosystem.getVRDirectory().getVrList()){
@@ -206,9 +206,6 @@ public class RequestsPanel extends javax.swing.JPanel {
         }
         else if(selectedV.getVolAvail().equals("Yes")){
             JOptionPane.showMessageDialog(this, "This Volunteer is already available");
-        }
-        else if(selectedV.getVolAvail().equals("No")){
-            JOptionPane.showMessageDialog(this, "This Volunteer is currently unavailable");
         }
         populateRTable();
         populateVTable();

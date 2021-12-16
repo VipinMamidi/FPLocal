@@ -84,12 +84,12 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
         lblWHval = new javax.swing.JLabel();
         lblPantry = new javax.swing.JLabel();
         cbPantry = new javax.swing.JComboBox<>();
-        lblFDq = new javax.swing.JLabel();
         btnSubmit = new javax.swing.JButton();
         lblitemID = new javax.swing.JLabel();
         txtitemId = new javax.swing.JTextField();
         btnclear = new javax.swing.JButton();
         LabelImg = new javax.swing.JLabel();
+        lblFDq = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -154,10 +154,6 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
         });
         add(cbPantry, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 150, -1));
 
-        lblFDq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblFDq.setText("Item Quantity :");
-        add(lblFDq, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 311, -1, -1));
-
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +185,10 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
         });
         add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, -1, -1));
         add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1650, 970));
+
+        lblFDq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblFDq.setText("Item Quantity :");
+        add(lblFDq, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 311, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
      public void setBG() {

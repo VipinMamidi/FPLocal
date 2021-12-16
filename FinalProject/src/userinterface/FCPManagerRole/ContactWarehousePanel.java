@@ -5,6 +5,8 @@
 package userinterface.FCPManagerRole;
 
 import Business.EcoSystem;
+import Business.FCPantry.FCPantry;
+import Business.FCWarehouse.FCWarehouse;
 import Business.UserAccount.UserAccount;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -26,6 +28,8 @@ public class ContactWarehousePanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAcc;
+    String WHname;
+    String FCPmgname;
     public ContactWarehousePanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -35,7 +39,14 @@ public class ContactWarehousePanel extends javax.swing.JPanel {
         lblq.setVisible(false);
         cbQ.setVisible(false);
         btnReq.setVisible(false);
+        FCPmgname = userAcc.getEmployee().getName();
+        for(FCPantry fcp: ecosystem.getFCPDirectory().getFcpList()){
+            if(fcp.getFcpManager().equals(FCPmgname)){
+                 WHname = fcp.getFcpWHname();
+            }
+        }
         setBG();
+        populatefields();
     }
 
     /**
@@ -272,5 +283,19 @@ public class ContactWarehousePanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtWHZip;
     private javax.swing.JTextField txtWHname;
     // End of variables declaration//GEN-END:variables
+
+    private void populatefields() {
+        for(FCWarehouse fcw : ecosystem.getFCWDirectory().getFcwList()){
+            if(fcw.getFcwName().equals(WHname)){
+                txtWHname.setText(fcw.getFcwName());
+                txtWHPhno.setText(fcw.getFcwPhno());
+                txtWHAdd.setText(fcw.getFcwAddres());
+                txtWHCity.setText(fcw.getFcwCity());
+                txtWHState.setText(fcw.getFcwState());
+                txtWHZip.setText(fcw.getFcwZipcode());
+                txtWHFCAdmin.setText(fcw.getFcwAdmin());
+            }
+        }
+    }
 
 }

@@ -32,19 +32,20 @@ public class DonorProfilePanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     UserAccount userAcc;
     String DonUname;
+    String DonName;
     DonorDirectory donDir;
-
     public DonorProfilePanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
-        populateFields();
         btnSubmit.setVisible(false);
         btnCancel.setVisible(false);
         lblDpwd1.setVisible(false);
         txtDpwd1.setVisible(false);
         DonUname = userAcc.getUsername();
+        DonName = userAcc.getEmployee().getName();
+        populateFields();
         setBG();
         setLogo();
     }
@@ -480,6 +481,7 @@ public class DonorProfilePanel extends javax.swing.JPanel {
 
     private void populateFields() {
         for (Donor d : ecosystem.getDonDir().getDonorList()) {
+            if(d.getDonorName().equals(DonName)){
             txtDname.setText(d.getDonorName());
             txtDname.setEnabled(false);
             txtDphno.setText(d.getDonorPhno());
@@ -498,6 +500,7 @@ public class DonorProfilePanel extends javax.swing.JPanel {
             txtDuname.setEnabled(false);
             txtDpwd.setText(d.getDonorAccount().getPassword());
             txtDpwd.setEnabled(false);
+            }
         }
     }
 

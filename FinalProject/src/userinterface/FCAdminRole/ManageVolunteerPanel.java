@@ -40,6 +40,7 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
     VolunteerDirectory vold;
     VolRequestsDirectory vrD;
     String WHname;
+    String city;
     public ManageVolunteerPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -49,9 +50,16 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
          if(ecosystem.getVRDirectory() == null){
          ecosystem.setVRDirectory(new VolRequestsDirectory());
         }
+        for(FCWarehouse fcw:ecosystem.getFCWDirectory().getFcwList()){
+            if(fcw.getFcwAdmin().equals(userAcc.getEmployee().getName())){
+              city=fcw.getFcwCity();
+            }
+        }
         ArrayList<String> ngoList = new ArrayList();
         for (NGO ng : ecosystem.getNgoDir().getNgoList()){
+            if(ng.getNgoCity().equals(city)){
             ngoList.add(ng.getNgoName());
+            }
         }
         cbV.setModel(new DefaultComboBoxModel<String>(ngoList.toArray(new String[0])));
         for(FCWarehouse fcw: ecosystem.getFCWDirectory().getFcwList()){
@@ -256,6 +264,7 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblVolunteer.getModel();
         model.setRowCount(0);
         for(Volunteer vol: ecosystem.getVolDir().getVolunteerList()){
+            if(vol.getVolAvail().equals("Yes")){
            Object[] row = new Object[7];
            row[0] =vol;
            row[1] =vol.getVolName();
@@ -265,6 +274,7 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
            row[5] =vol.getVolZipcode();
            row[6] =vol.getVolAvail();
            model.addRow(row);
+            }
         } 
     }
 }
