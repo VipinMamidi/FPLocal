@@ -54,7 +54,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         }
         ArrayList<String> VolunteerList = new ArrayList();
         for (Volunteer vol : ecosystem.getVolDir().getVolunteerList()){
-            if(vol.getVolCity().equals(city)){
+            if(vol.getVolCity().equals(city) && vol.getVolAvail().equals("Yes")){
             VolunteerList.add(vol.getVolName());
             }
         }

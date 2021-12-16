@@ -6,8 +6,10 @@ package userinterface.FCPManagerRole;
 
 import Business.EcoSystem;
 import Business.FCPantry.FCPantry;
+import Business.FCWarehouse.FCWarehouse;
 import Business.NGOVolunteer.Volunteer;
 import Business.Reqorder.Reqorder;
+import Business.Reqorder.ReqorderDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -37,17 +39,29 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
     String volname;
     String FCPname;
     String FCPmgname;
+    String city;
     public ViewFoodRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
+        if(ecosystem.getReqorderDirectory()== null){
+         ecosystem.setReqorderDirectory(new ReqorderDirectory());
+        }
         FCPmgname = userAcc.getEmployee().getName();
         for(FCPantry fcp: ecosystem.getFCPDirectory().getFcpList()){
             if(fcp.getFcpManager().equals(FCPmgname)){
                  FCPname = fcp.getFcpName();
+                 city=fcp.getFcpCity();
             }
         }
+        ArrayList<String> VolunteerList = new ArrayList();
+        for (Volunteer vol : ecosystem.getVolDir().getVolunteerList()){
+            if(vol.getVolCity().equals(city) && vol.getVolAvail().equals("Yes")){
+            VolunteerList.add(vol.getVolName());
+            }
+        }
+        cbVol.setModel(new DefaultComboBoxModel<String>(VolunteerList.toArray(new String[0])));
         populateTable();
          setBG();
          makeTableTransparent();
