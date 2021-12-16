@@ -8,6 +8,7 @@ import Business.Donation.Donation;
 import Business.EcoSystem;
 import Business.NGOVolunteer.Volunteer;
 import Business.UserAccount.UserAccount;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,6 +41,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         this.userAcc = userAcc;
         populateTable();
         setBG();
+        makeTableTransparent();
     }
 
     /**
@@ -62,9 +65,11 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         lblDonProfileTitle1 = new javax.swing.JLabel();
         LabelImg = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblDonProfileTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle.setText("Donation Requests");
         add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 14, -1, -1));
 
@@ -79,16 +84,21 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 "Donation Id", "Food Item", "Quantity", "Warehouse", "Status"
             }
         ));
+        tblDonReq.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblDonReqMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDonReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 66, 988, 153));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1030, 153));
 
         btnAssign.setText("Assign");
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 427, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, -1, -1));
 
-        lblDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDRid.setText("Donation Id");
-        add(lblDRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 338, -1, -1));
+        lblDRid.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDRid.setText("Donation Id :");
+        add(lblDRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
 
         txtDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDRid.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -102,14 +112,14 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 txtDRidKeyReleased(evt);
             }
         });
-        add(txtDRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 334, 137, -1));
+        add(txtDRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 137, -1));
 
-        lblDRid1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDRid1.setText("Assign Volunteer");
-        add(lblDRid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 381, -1, -1));
+        lblDRid1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDRid1.setText("Assign Volunteer :");
+        add(lblDRid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, -1, -1));
 
         cbVol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cbVol, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 377, -1, -1));
+        add(cbVol, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 140, -1));
 
         btnSend.setText("Send request to volunteer");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
@@ -117,14 +127,16 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 btnSendActionPerformed(evt);
             }
         });
-        add(btnSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(708, 231, -1, -1));
+        add(btnSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, -1, -1));
 
-        lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        lblDonProfileTitle1.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle1.setText("Assign Volunteer");
-        add(lblDonProfileTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 274, -1, -1));
-        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1590, 840));
+        add(lblDonProfileTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 850));
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void txtDRidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDRidFocusLost
         // TODO add your handling code here:
      
@@ -147,6 +159,21 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
             LabelImg.setIcon(new ImageIcon(newimg));
         } catch (IOException ex) {
             Logger.getLogger(ViewPantryItemsPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+  public void makeTableTransparent() {
+        tblDonReq.setOpaque(false);
+        ((DefaultTableCellRenderer) tblDonReq.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblDonReq.setShowGrid(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(Color.WHITE);
+
+        for (int i = 0; i < tblDonReq.getModel().getColumnCount(); i++) {
+            tblDonReq.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
     }
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
@@ -181,9 +208,15 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Pickup Request Assigned to Volunteer Successfully!");
     }//GEN-LAST:event_btnAssignActionPerformed
 
+    private void tblDonReqMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDonReqMousePressed
+        // TODO add your handling code here:
+        tblDonReq.setSelectionForeground(Color.BLUE);
+    }//GEN-LAST:event_tblDonReqMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelImg;
+    private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnSend;
     private javax.swing.JComboBox<String> cbVol;
     private javax.swing.JScrollPane jScrollPane1;
@@ -193,7 +226,6 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDonProfileTitle1;
     private javax.swing.JTable tblDonReq;
     private javax.swing.JTextField txtDRid;
-    private javax.swing.JButton btnAssign;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {

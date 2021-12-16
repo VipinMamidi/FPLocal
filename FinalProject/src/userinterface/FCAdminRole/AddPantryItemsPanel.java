@@ -21,6 +21,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.DonorRole.DonorProfilePanel;
 
 /**
  *
@@ -58,6 +59,9 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
         }
         cbPantry.setModel(new DefaultComboBoxModel<String>(PantryList.toArray(new String[0])));
         txtPM.setEnabled(false);
+        if(cbPantry.getSelectedItem().toString().isEmpty()){
+        txtPM.setText("");
+        }else{ txtPM.setText(getMngrName(cbPantry.getSelectedItem().toString())); }
         setBG();
     }
 
@@ -84,17 +88,20 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
         btnSubmit = new javax.swing.JButton();
         lblitemID = new javax.swing.JLabel();
         txtitemId = new javax.swing.JTextField();
+        btnclear = new javax.swing.JButton();
         LabelImg = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAddFCPTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblAddFCPTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblAddFCPTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblAddFCPTitle.setText("Add Pantry Items");
         add(lblAddFCPTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 19, -1, -1));
 
-        lblWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHname.setText("Warehouse Name");
-        add(lblWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 98, -1, -1));
+        lblWHname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblWHname.setText("Warehouse Name :");
+        add(lblWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
 
         txtPM.setEditable(false);
         txtPM.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -104,11 +111,16 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
                 txtPMFocusLost(evt);
             }
         });
+        txtPM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPMActionPerformed(evt);
+            }
+        });
         add(txtPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 178, 137, -1));
 
-        lblPantryMg.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblPantryMg.setText("Pantry Manager");
-        add(lblPantryMg, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 182, -1, -1));
+        lblPantryMg.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblPantryMg.setText("Pantry Manager :");
+        add(lblPantryMg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
 
         txtFDitem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFDitem.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -119,20 +131,20 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
         });
         add(txtFDitem, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 264, 137, -1));
 
-        lblFDitem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFDitem.setText("Food Item");
+        lblFDitem.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblFDitem.setText("Food Item :");
         add(lblFDitem, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 268, -1, -1));
 
         txtFDq.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFDq.setPreferredSize(new java.awt.Dimension(150, 25));
         add(txtFDq, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 307, 137, -1));
 
-        lblWHval.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        add(lblWHval, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 98, -1, -1));
+        lblWHval.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        add(lblWHval, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 98, 130, 20));
 
-        lblPantry.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblPantry.setText("Select Pantry");
-        add(lblPantry, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 137, -1, -1));
+        lblPantry.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblPantry.setText(" Pantry :");
+        add(lblPantry, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
 
         cbPantry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbPantry.addActionListener(new java.awt.event.ActionListener() {
@@ -140,12 +152,13 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
                 cbPantryActionPerformed(evt);
             }
         });
-        add(cbPantry, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 133, -1, -1));
+        add(cbPantry, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 150, -1));
 
-        lblFDq.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFDq.setText("Item Quantity");
+        lblFDq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblFDq.setText("Item Quantity :");
         add(lblFDq, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 311, -1, -1));
 
+        btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,8 +167,8 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
         });
         add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 379, -1, -1));
 
-        lblitemID.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblitemID.setText("Item Id");
+        lblitemID.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblitemID.setText("Item Id :");
         add(lblitemID, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 225, -1, -1));
 
         txtitemId.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -166,10 +179,19 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
             }
         });
         add(txtitemId, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 221, 137, -1));
-        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1520, 790));
+
+        btnclear.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnclear.setText("Clear");
+        btnclear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnclearActionPerformed(evt);
+            }
+        });
+        add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1650, 970));
     }// </editor-fold>//GEN-END:initComponents
 
-    public void setBG() {
+     public void setBG() {
         try {
             LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
             LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
@@ -177,10 +199,10 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
 
             Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
 
-            Image newimg = img.getScaledInstance(1650, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
             LabelImg.setIcon(new ImageIcon(newimg));
         } catch (IOException ex) {
-            Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -217,7 +239,9 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
 
     private void clearfields() {
         txtitemId.setText("");
+       if(cbPantry.getSelectedItem().toString().isEmpty()){
         txtPM.setText("");
+        }else{ txtPM.setText(getMngrName(cbPantry.getSelectedItem().toString())); }
         txtFDitem.setText("");
         txtFDq.setText("");
     }//GEN-LAST:event_btnSubmitActionPerformed
@@ -225,22 +249,37 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
     private void cbPantryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPantryActionPerformed
         // TODO add your handling code here:
         String fpname=cbPantry.getSelectedItem().toString();
-        for(FCPantry fp: ecosystem.getFCPDirectory().getFcpList()){
-            if(fp.getFcpName().equals(fpname)){
-                txtPM.setText(fp.getFcpManager());
-            }
-        //txtPM.setText(ecosystem.getFCPDirectory());
-        }
+        txtPM.setText(getMngrName(fpname));
     }//GEN-LAST:event_cbPantryActionPerformed
 
+    public String getMngrName(String pantry){
+        String mngr="";
+        for(FCPantry fp: ecosystem.getFCPDirectory().getFcpList()){
+            if(fp.getFcpName().equals(pantry)){
+                mngr = fp.getFcpManager(); 
+            }
+        }
+        return mngr;
+    }
+    
     private void txtitemIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtitemIdFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_txtitemIdFocusLost
+
+    private void txtPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPMActionPerformed
+
+    private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclearActionPerformed
+        // TODO add your handling code here:
+        clearfields();
+    }//GEN-LAST:event_btnclearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnSubmit;
+    private javax.swing.JButton btnclear;
     private javax.swing.JComboBox<String> cbPantry;
     private javax.swing.JLabel lblAddFCPTitle;
     private javax.swing.JLabel lblFDitem;

@@ -274,15 +274,15 @@ public class AddNGOPanel extends javax.swing.JPanel {
         add(LabelImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1430, 710));
     }// </editor-fold>//GEN-END:initComponents
 
-       public void setBG() {
+     public void setBG() {
         try {
-            LabelImage.setMinimumSize(new Dimension(1500, 1000));
-            LabelImage.setPreferredSize(new Dimension(1500, 1000));
-            LabelImage.setMaximumSize(new Dimension(1500, 1000));
+            LabelImage.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImage.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImage.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
 
             Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
 
-            Image newimg = img.getScaledInstance(2000, 1000, java.awt.Image.SCALE_SMOOTH);
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
             LabelImage.setIcon(new ImageIcon(newimg));
         } catch (IOException ex) {
             Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);

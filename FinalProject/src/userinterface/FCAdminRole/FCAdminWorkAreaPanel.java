@@ -57,9 +57,9 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         btnViewDonReq = new javax.swing.JButton();
         btnMgPTitems = new javax.swing.JButton();
         btnMgVol = new javax.swing.JButton();
-        lblwelusername = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
         lbllogout = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         WorkAreaPanel = new javax.swing.JPanel();
         LabelImg = new javax.swing.JLabel();
 
@@ -98,11 +98,9 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
             }
         });
 
-        lblwelusername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblwelusername.setText("Food Cloud Admin !");
-
-        lblWelcomemsg.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblWelcomemsg.setText("Welcome,");
+        lblWelcomemsg.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblWelcomemsg.setForeground(new java.awt.Color(51, 153, 255));
+        lblWelcomemsg.setText("Welcome, Food Cloud Admin !");
 
         lbllogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -119,53 +117,57 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
                     .addGroup(MenubarPanelLayout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(btnMgPTitems)
-                        .addGap(40, 40, 40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnViewDonReq)
-                        .addGap(126, 126, 126)
-                        .addComponent(btnMgVol)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addContainerGap(378, Short.MAX_VALUE)
-                        .addComponent(lblWelcomemsg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblwelusername)
-                        .addGap(279, 279, 279)))
+                        .addComponent(btnMgVol)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblWelcomemsg)
+                        .addGap(120, 120, 120)))
+                .addComponent(jLabel1)
+                .addGap(153, 153, 153)
                 .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
         MenubarPanelLayout.setVerticalGroup(
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+            .addGroup(MenubarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblwelusername)
-                            .addComponent(lblWelcomemsg))
+                        .addComponent(lblWelcomemsg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnMgPTitems)
-                            .addComponent(btnMgVol)
-                            .addComponent(btnViewDonReq))))
-                .addGap(15, 15, 15))
+                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnMgPTitems)
+                                .addComponent(btnMgVol)
+                                .addComponent(btnViewDonReq))
+                            .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15))
+                    .addGroup(MenubarPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         SplitPaneFCAdmin.setLeftComponent(MenubarPanel);
 
         WorkAreaPanel.setPreferredSize(new java.awt.Dimension(1000, 700));
 
+        LabelImg.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout WorkAreaPanelLayout = new javax.swing.GroupLayout(WorkAreaPanel);
         WorkAreaPanel.setLayout(WorkAreaPanelLayout);
         WorkAreaPanelLayout.setHorizontalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
         );
         WorkAreaPanelLayout.setVerticalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
+            .addGroup(WorkAreaPanelLayout.createSequentialGroup()
+                .addComponent(LabelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         SplitPaneFCAdmin.setRightComponent(WorkAreaPanel);
@@ -178,7 +180,7 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneFCAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+            .addComponent(SplitPaneFCAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,7 +233,7 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
     }
     
-     public void setBG() {
+  public void setBG() {
         try {
             LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
             LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
@@ -239,10 +241,10 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
             Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
 
-            Image newimg = img.getScaledInstance(1650, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
             LabelImg.setIcon(new ImageIcon(newimg));
         } catch (IOException ex) {
-            Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -254,8 +256,8 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnMgPTitems;
     private javax.swing.JButton btnMgVol;
     private javax.swing.JButton btnViewDonReq;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblWelcomemsg;
     private javax.swing.JLabel lbllogout;
-    private javax.swing.JLabel lblwelusername;
     // End of variables declaration//GEN-END:variables
 }
