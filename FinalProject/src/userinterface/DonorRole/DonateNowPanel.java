@@ -58,7 +58,7 @@ public class DonateNowPanel extends javax.swing.JPanel {
         cbCity.setModel(new DefaultComboBoxModel<String>(CityList.toArray(new String[0])));
         
         setBG();
-        setLogo();
+       // setLogo();
     }
 
     /**

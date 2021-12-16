@@ -44,6 +44,7 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         this.jsp = jsp;
         setBG();
         logoutlogo();
+        setLogo();
 
     }
 
@@ -63,6 +64,8 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         btnDonNow = new javax.swing.JButton();
         lblWelcomemsg = new javax.swing.JLabel();
         lbllogout = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        logoImage = new javax.swing.JLabel();
         WorkAreaPanel = new javax.swing.JPanel();
         LabelImg = new javax.swing.JLabel();
 
@@ -72,6 +75,7 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
 
         MenubarPanel.setBackground(new java.awt.Color(255, 255, 255));
         MenubarPanel.setPreferredSize(new java.awt.Dimension(617, 500));
+        MenubarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnViewDon.setBackground(new java.awt.Color(105, 158, 208));
         btnViewDon.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -81,6 +85,7 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
                 btnViewDonActionPerformed(evt);
             }
         });
+        MenubarPanel.add(btnViewDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         btnProfile.setBackground(new java.awt.Color(105, 158, 208));
         btnProfile.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -90,6 +95,7 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
                 btnProfileActionPerformed(evt);
             }
         });
+        MenubarPanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         btnDonNow.setBackground(new java.awt.Color(105, 158, 208));
         btnDonNow.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -99,58 +105,21 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
                 btnDonNowActionPerformed(evt);
             }
         });
+        MenubarPanel.add(btnDonNow, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
 
-        lblWelcomemsg.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        lblWelcomemsg.setForeground(new java.awt.Color(0, 204, 204));
+        lblWelcomemsg.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblWelcomemsg.setForeground(new java.awt.Color(51, 153, 255));
         lblWelcomemsg.setText("Welcome Donor !");
+        MenubarPanel.add(lblWelcomemsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         lbllogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lbllogoutMousePressed(evt);
             }
         });
-
-        javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
-        MenubarPanel.setLayout(MenubarPanelLayout);
-        MenubarPanelLayout.setHorizontalGroup(
-            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenubarPanelLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblWelcomemsg)
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addComponent(btnProfile)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnViewDon)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnDonNow)
-                        .addGap(107, 107, 107)))
-                .addGap(207, 207, 207)
-                .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        MenubarPanelLayout.setVerticalGroup(
-            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenubarPanelLayout.createSequentialGroup()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btnProfile))
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(btnViewDon)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(MenubarPanelLayout.createSequentialGroup()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addComponent(lblWelcomemsg)
-                        .addGap(2, 2, 2)
-                        .addComponent(btnDonNow))
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        MenubarPanel.add(lbllogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, 42, 32));
+        MenubarPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 0, -1, 130));
+        MenubarPanel.add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 80, 60));
 
         SplitPaneDon.setLeftComponent(MenubarPanel);
 
@@ -183,6 +152,21 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+     public void setLogo() {
+        try {
+            logoImage.setMinimumSize(new Dimension(100, 100));
+            logoImage.setPreferredSize(new Dimension(100, 100));
+            logoImage.setMaximumSize(new Dimension(100, 100));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
+
+            Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            logoImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
     public void setBG() {
         try {
             LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
@@ -255,7 +239,9 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDonNow;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnViewDon;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblWelcomemsg;
     private javax.swing.JLabel lbllogout;
+    private javax.swing.JLabel logoImage;
     // End of variables declaration//GEN-END:variables
 }

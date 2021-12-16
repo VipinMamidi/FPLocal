@@ -41,7 +41,7 @@ public class ViewDonationPanel extends javax.swing.JPanel {
         this.userAcc = userAcc;
         populateTable();
         setBG();
-        setLogo();
+       // setLogo();
         makeTableTransparent();
     }
 
