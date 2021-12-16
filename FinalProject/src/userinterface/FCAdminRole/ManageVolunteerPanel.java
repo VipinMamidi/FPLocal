@@ -52,6 +52,8 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
                 WHname=fcw.getFcwName();
             }
         }
+        lblq.setVisible(false);
+        cbQ.setVisible(false);
     }
 
     /**

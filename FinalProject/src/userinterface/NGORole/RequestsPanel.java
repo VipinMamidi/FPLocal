@@ -36,7 +36,7 @@ public class RequestsPanel extends javax.swing.JPanel {
         populateVTable();
         ngoName= userAcc.getEmployee().getName();
         //tblV.setVisible(false);
-        btnAvail.setVisible(false);
+       // btnAvail.setVisible(false);
     }
 
     /**
@@ -259,6 +259,7 @@ public class RequestsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblV.getModel();
         model.setRowCount(0);
         for(Volunteer vol: ecosystem.getVolDir().getVolunteerList()){
+            if(vol.getVolNGO().equals(ngoName)){
            Object[] row = new Object[6];
            row[0] =vol;
            row[1] =vol.getVolName();
@@ -267,6 +268,7 @@ public class RequestsPanel extends javax.swing.JPanel {
            row[4] =vol.getVolZipcode();
            row[5] =vol.getVolAvail();
            model.addRow(row);
+            }
         } 
     }
 }
