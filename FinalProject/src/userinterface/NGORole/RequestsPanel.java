@@ -35,8 +35,7 @@ public class RequestsPanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
         ngoAName= userAcc.getEmployee().getName();
-        ArrayList<NGO> ngolist = new ArrayList<NGO>();
-        for(NGO ng: ngolist){
+        for(NGO ng: ecosystem.getNgoDir().getNgoList()){
             if(ng.getNgoAgent().equals(ngoAName)){
                 ngoName=ng.getNgoName();
             }
@@ -198,8 +197,7 @@ public class RequestsPanel extends javax.swing.JPanel {
         if(selectedV.getVolAvail().equals("New")){
         selectedV.setVolAvail("Yes");
         String reqidval=lblR.getText();
-        ArrayList<VolRequests> vrList=new ArrayList<VolRequests>();
-        for(VolRequests vr: vrList){
+        for(VolRequests vr: ecosystem.getVRDirectory().getVrList()){
             if(vr.getVolreqId().equals(reqidval)){
                 vr.setVolreqStatus("Completed");
             }
@@ -214,6 +212,8 @@ public class RequestsPanel extends javax.swing.JPanel {
         }
         populateRTable();
         populateVTable();
+        lblR.setText("");
+        lblW.setText("");
     }//GEN-LAST:event_btnAvailActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
@@ -225,10 +225,15 @@ public class RequestsPanel extends javax.swing.JPanel {
         }
         DefaultTableModel model = (DefaultTableModel) tblR.getModel();
         VolRequests selectedVR = (VolRequests)model.getValueAt(selectedRowIndex, 0);
+        if(selectedVR.getVolreqStatus().equals("Completed")){
+            JOptionPane.showMessageDialog(this, "Request already completed!");
+        }
+        else{
         lblW.setText(selectedVR.getVolreqWH());
         lblR.setText(selectedVR.getVolreqId());
         tblV.setVisible(true);
         btnAvail.setVisible(true);
+        }
         populateVTable();
     }//GEN-LAST:event_btnProcessActionPerformed
 
@@ -267,7 +272,7 @@ public class RequestsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblV.getModel();
         model.setRowCount(0);
         for(Volunteer vol: ecosystem.getVolDir().getVolunteerList()){
-            if(vol.getVolNGO().equals(ngoName)){
+            if(vol.getVolNGO().equals(ngoAName)){
            Object[] row = new Object[6];
            row[0] =vol;
            row[1] =vol.getVolName();

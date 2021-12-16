@@ -40,7 +40,7 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
         this.jsp = jsp;
         name = userAccount.getEmployee().getName();
         populatePickupTable();
-       // populateDelTable();
+        populateDelTable();
         if(ecosystem.getDonatDirectory()== null){
          ecosystem.setDonatDirectory(new DonationDirectory());
         }

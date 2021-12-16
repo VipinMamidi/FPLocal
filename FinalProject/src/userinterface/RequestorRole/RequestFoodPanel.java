@@ -299,7 +299,7 @@ public class RequestFoodPanel extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        if(!nullCheck()){
+        //if(!nullCheck()){
             Reqorder rq= new Reqorder();
             rq.setReqOrderId("1");
             rq.setReqName(reqName);
@@ -319,27 +319,15 @@ public class RequestFoodPanel extends javax.swing.JPanel {
             ecosystem.setReqorderDirectory(rqorD);
             JOptionPane.showMessageDialog(this, "Your request has been placed. We love to serve you soon!");
             clearfields();
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Please make sure that you have filled all mandatory fields");
-        }
+//        }
+//        else{
+         //   JOptionPane.showMessageDialog(this, "Please make sure that you have filled all mandatory fields");
+        //}
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void cbDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDelActionPerformed
         // TODO add your handling code here:
-        if(cbDel.getSelectedIndex()==1){
-            lblDonProfileTitle1.setVisible(false);
-            chkAdd.setVisible(false);
-            lblDadd.setVisible(false);
-            txtDadd.setVisible(false);
-            lblDcity.setVisible(false);
-            txtDcity.setVisible(false);
-            lblDstate.setVisible(false);
-            txtDstate.setVisible(false);
-            lblDzip.setVisible(false);
-            txtDzip.setVisible(false);
-        }
-        else{
+        if(cbDel.getSelectedIndex()==2){
             lblDonProfileTitle1.setVisible(true);
             chkAdd.setVisible(true);
             lblDadd.setVisible(true);
@@ -350,6 +338,18 @@ public class RequestFoodPanel extends javax.swing.JPanel {
             txtDstate.setVisible(true);
             lblDzip.setVisible(true);
             txtDzip.setVisible(true);
+        }
+        else{
+            lblDonProfileTitle1.setVisible(false);
+            chkAdd.setVisible(false);
+            lblDadd.setVisible(false);
+            txtDadd.setVisible(false);
+            lblDcity.setVisible(false);
+            txtDcity.setVisible(false);
+            lblDstate.setVisible(false);
+            txtDstate.setVisible(false);
+            lblDzip.setVisible(false);
+            txtDzip.setVisible(false);
         }
     }//GEN-LAST:event_cbDelActionPerformed
 
@@ -381,14 +381,14 @@ public class RequestFoodPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDzip;
     // End of variables declaration//GEN-END:variables
 
-    private boolean nullCheck() {
-        if(txtDadd.getText().length()!=0 && txtDcity.getText().length()!=0 && 
-                txtDstate.getText().length()!=0 && txtDzip.getText().length()!=0 )
-        {
-            return false;
-        }
-        else return true;
-    }
+//    private boolean nullCheck() {
+//        if(txtDadd.getText().length()!=0 && txtDcity.getText().length()!=0 && 
+//                txtDstate.getText().length()!=0 && txtDzip.getText().length()!=0 )
+//        {
+//            return false;
+//        }
+//        else return true;
+//    }
 
     private void clearfields() {
         txtDadd.setText("");

@@ -12,9 +12,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -34,11 +36,20 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     UserAccount userAcc;
     String volname;
+    String WHname;
     public DonationRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
+        String FCAname=userAcc.getEmployee().getName();
+        System.out.println(FCAname);
+        WHname= ecosystem.getFCWDirectory().getWHname(FCAname);
+        ArrayList<String> VolunteerList = new ArrayList();
+        for (Volunteer vol : ecosystem.getVolDir().getVolunteerList()){
+            VolunteerList.add(vol.getVolName());
+        }
+        cbVol.setModel(new DefaultComboBoxModel<String>(VolunteerList.toArray(new String[0])));
         populateTable();
         setBG();
         makeTableTransparent();
@@ -94,6 +105,11 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1030, 153));
 
         btnAssign.setText("Assign");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
         add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, -1, -1));
 
         lblDRid.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -190,16 +206,12 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblDonReq.getSelectedRow();
-        if(selectedRowIndex < 0){
-            JOptionPane.showMessageDialog(this, "Please select a request");
-            return;
+        String Donid=txtDRid.getText();
+        for(Donation d: ecosystem.getDonatDirectory().getDonatList()){
+            volname= cbVol.getSelectedItem().toString();
+            d.setDonatVol(volname);
+            d.setDonatStatus("Assigned to Volunteer");
         }
-        DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
-        Donation selectedD = (Donation)model.getValueAt(selectedRowIndex, 0);
-        volname= cbVol.getSelectedItem().toString();
-        selectedD.setDonatVol(volname);
-        selectedD.setDonatStatus("Assigned to Volunteer");
         for(Volunteer v:ecosystem.getVolDir().getVolunteerList()){
             if(v.getVolName().equals(volname)){
                 v.setVolAvail("No");
@@ -232,6 +244,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
         model.setRowCount(0);
         for(Donation dt: ecosystem.getDonatDirectory().getDonatList()){
+            if(dt.getDonatWHname().equals(WHname)){
            Object[] row = new Object[5];
            row[0] =dt;
            row[1] =dt.getDonatFooditem();
@@ -239,6 +252,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
            row[3] =dt.getDonatWHname();
            row[4] =dt.getDonatStatus();
            model.addRow(row);
+            }
         } 
     }
 }
