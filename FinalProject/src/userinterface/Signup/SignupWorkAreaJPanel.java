@@ -298,6 +298,8 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        rdPanel.setOpaque(false);
+
         rdRes.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         rdRes.setText("Restaurant");
         rdRes.addActionListener(new java.awt.event.ActionListener() {
@@ -447,7 +449,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(245, 245, 245)
                         .addComponent(btnSave)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(bgImgLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
+            .addComponent(bgImgLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,7 +543,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(629, 629, 629)
                         .addComponent(btnSave)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(bgImgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -845,7 +847,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             return true;
         }
 
-        if (txtAge.isVisible()) {
+        if (txtAge.isEnabled()) {
             if (txtAge.getText().isEmpty() || txtAge.getText() == "") {
                 JOptionPane.showMessageDialog(this, "Please Provide Age!!");
                 return true;
@@ -912,10 +914,17 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
 
     private boolean ageValidation() {
         isNotValid = false;
-        if (txtAge.isVisible()) {
-            if ((!txtAge.getText().isEmpty()) && Integer.parseInt(txtAge.getText()) < 0 && Integer.parseInt(txtAge.getText()) > 100) {
-                JOptionPane.showMessageDialog(this, "Please Provide Valid Age !!");
+        if (txtAge.isEnabled()) {
+            if ((!txtAge.getText().isEmpty()) && !txtAge.getText().matches("^[0-9]*$") ) {
+//                && Integer.parseInt(txtAge.getText().toString()) < 0 && Integer.parseInt(txtAge.getText().toString()) > 100
+                JOptionPane.showMessageDialog(this, "Please Provide Only Numbers !!");
                 isNotValid = true;
+                return isNotValid;
+            }
+            if((!txtAge.getText().isEmpty()) && (Integer.parseInt(txtAge.getText().toString()) < 0 || Integer.parseInt(txtAge.getText().toString()) > 100)){
+               JOptionPane.showMessageDialog(this, "Please Provide Valid Age !!");
+                isNotValid = true;
+                return isNotValid;
             }
         }
         return isNotValid;
