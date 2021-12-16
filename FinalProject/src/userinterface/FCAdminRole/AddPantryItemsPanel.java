@@ -59,7 +59,7 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
         }
         cbPantry.setModel(new DefaultComboBoxModel<String>(PantryList.toArray(new String[0])));
         txtPM.setEnabled(false);
-        if(cbPantry.getSelectedItem().toString().isEmpty()){
+        if(cbPantry.getSelectedItem() == null || cbPantry.getItemCount() == 0){
         txtPM.setText("");
         }else{ txtPM.setText(getMngrName(cbPantry.getSelectedItem().toString())); }
         setBG();

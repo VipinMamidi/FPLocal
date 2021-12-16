@@ -7,8 +7,15 @@ package userinterface.FCPManagerRole;
 import Business.EcoSystem;
 import Business.FCPantry.FCPantryItems;
 import Business.UserAccount.UserAccount;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,6 +41,8 @@ public class PantryStockPanel extends javax.swing.JPanel {
          cbQ.setVisible(false);
          btnReq.setVisible(false);
          chkReq.setVisible(false);
+         setBG();
+         makeTableTransparent();
     }
 
     /**
@@ -53,9 +62,14 @@ public class PantryStockPanel extends javax.swing.JPanel {
         cbQ = new javax.swing.JComboBox<>();
         chkReq = new javax.swing.JCheckBox();
         lblq1 = new javax.swing.JLabel();
+        LabelImg = new javax.swing.JLabel();
 
-        lblAddFCPTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAddFCPTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblAddFCPTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblAddFCPTitle.setText("Available Stock");
+        add(lblAddFCPTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
 
         tblitems.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,7 +82,14 @@ public class PantryStockPanel extends javax.swing.JPanel {
                 "Item Id", "Food Item", "Item Quantity"
             }
         ));
+        tblitems.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblitemsMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblitems);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 1008, 153));
 
         btnReq.setText("Submit Request");
         btnReq.addActionListener(new java.awt.event.ActionListener() {
@@ -76,11 +97,14 @@ public class PantryStockPanel extends javax.swing.JPanel {
                 btnReqActionPerformed(evt);
             }
         });
+        add(btnReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 369, -1, -1));
 
         lblq.setText("Quantity Required for:");
+        add(lblq, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 315, -1, -1));
 
         cbQ.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbQ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-select-", "50", "100", "150", "200", "250" }));
+        add(cbQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(497, 311, 120, -1));
 
         chkReq.setText("Request stock from Warehouse");
         chkReq.addActionListener(new java.awt.event.ActionListener() {
@@ -88,60 +112,44 @@ public class PantryStockPanel extends javax.swing.JPanel {
                 chkReqActionPerformed(evt);
             }
         });
+        add(chkReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
         lblq1.setText("Persons");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1008, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(419, 419, 419)
-                                .addComponent(lblAddFCPTitle))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(361, 361, 361)
-                                .addComponent(chkReq))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(316, 316, 316)
-                                .addComponent(lblq)
-                                .addGap(42, 42, 42)
-                                .addComponent(cbQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblq1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(403, 403, 403)
-                .addComponent(btnReq)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblAddFCPTitle)
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(chkReq)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblq)
-                    .addComponent(lblq1))
-                .addGap(31, 31, 31)
-                .addComponent(btnReq)
-                .addContainerGap(202, Short.MAX_VALUE))
-        );
+        add(lblq1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 690));
     }// </editor-fold>//GEN-END:initComponents
 
+    
+       public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+
+        }
+    }
+
+    public void makeTableTransparent() {
+        tblitems.setOpaque(false);
+        ((DefaultTableCellRenderer) tblitems.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblitems.setShowGrid(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(Color.WHITE);
+
+        for (int i = 0; i < tblitems.getModel().getColumnCount(); i++) {
+            tblitems.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+    }
+    
     private void chkReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkReqActionPerformed
         // TODO add your handling code here:
         if(chkReq.isSelected()){
@@ -163,8 +171,14 @@ public class PantryStockPanel extends javax.swing.JPanel {
          JOptionPane.showMessageDialog(this, "Your request has been sent to Warehouse");
     }//GEN-LAST:event_btnReqActionPerformed
 
+    private void tblitemsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblitemsMousePressed
+        // TODO add your handling code here:
+        tblitems.setSelectionForeground(Color.BLUE);
+    }//GEN-LAST:event_tblitemsMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnReq;
     private javax.swing.JComboBox<String> cbQ;
     private javax.swing.JCheckBox chkReq;

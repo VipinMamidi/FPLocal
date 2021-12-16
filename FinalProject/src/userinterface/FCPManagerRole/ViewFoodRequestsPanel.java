@@ -8,10 +8,17 @@ import Business.EcoSystem;
 import Business.NGOVolunteer.Volunteer;
 import Business.Reqorder.Reqorder;
 import Business.UserAccount.UserAccount;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,6 +40,8 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
         populateTable();
+         setBG();
+         makeTableTransparent();
     }
 
     /**
@@ -54,9 +63,14 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
         cbVol = new javax.swing.JComboBox<>();
         btnSend = new javax.swing.JButton();
         lblDonProfileTitle1 = new javax.swing.JLabel();
+        LabelImg = new javax.swing.JLabel();
 
-        lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDonProfileTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblDonProfileTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle.setText("Food Requests");
+        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 32, -1, -1));
 
         tblFdReqs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,17 +83,27 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
                 "Request Id", "Requestor", "Quantity", "Order Type", "Status"
             }
         ));
+        tblFdReqs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblFdReqsMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblFdReqs);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 99, 999, 153));
+
+        btnAssign.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnAssign.setText("Assign");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 469, -1, -1));
 
-        lblRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblRid.setText("Request ID");
+        lblRid.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblRid.setText("Request ID :");
+        add(lblRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 380, -1, -1));
 
         txtDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDRid.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -93,84 +117,60 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
                 txtDRidKeyReleased(evt);
             }
         });
+        add(txtDRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 376, 137, -1));
 
-        lblDRid1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDRid1.setText("Assign Volunteer");
+        lblDRid1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDRid1.setText("Assign Volunteer :");
+        add(lblDRid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 423, -1, -1));
 
         cbVol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cbVol, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 419, 137, -1));
 
+        btnSend.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSend.setText("Send request to volunteer");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendActionPerformed(evt);
             }
         });
+        add(btnSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(854, 286, -1, -1));
 
-        lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle1.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
+        lblDonProfileTitle1.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle1.setText("Assign Volunteer");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(323, 323, 323)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDRid1)
-                            .addComponent(lblRid))
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDRid, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 388, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(406, 406, 406)
-                        .addComponent(btnAssign))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(lblDonProfileTitle1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(437, 437, 437)
-                        .addComponent(lblDonProfileTitle)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSend)
-                .addGap(44, 44, 44))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(lblDonProfileTitle)
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSend)
-                .addGap(14, 14, 14)
-                .addComponent(lblDonProfileTitle1)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRid)
-                    .addComponent(txtDRid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDRid1)
-                    .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(btnAssign)
-                .addContainerGap(144, Short.MAX_VALUE))
-        );
+        add(lblDonProfileTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 302, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1470, 670));
     }// </editor-fold>//GEN-END:initComponents
 
+           public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+
+        }
+    }
+
+    public void makeTableTransparent() {
+        tblFdReqs.setOpaque(false);
+        ((DefaultTableCellRenderer) tblFdReqs.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblFdReqs.setShowGrid(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(Color.WHITE);
+
+        for (int i = 0; i < tblFdReqs.getModel().getColumnCount(); i++) {
+            tblFdReqs.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+    }
     private void txtDRidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDRidFocusLost
         // TODO add your handling code here:
 
@@ -217,8 +217,14 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Pickup Request Assigned to Volunteer Successfully!");
     }//GEN-LAST:event_btnAssignActionPerformed
 
+    private void tblFdReqsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFdReqsMousePressed
+        // TODO add your handling code here:
+      tblFdReqs.setSelectionForeground(Color.BLUE);
+    }//GEN-LAST:event_tblFdReqsMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnSend;
     private javax.swing.JComboBox<String> cbVol;
