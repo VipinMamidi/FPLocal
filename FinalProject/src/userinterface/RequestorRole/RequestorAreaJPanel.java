@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import userinterface.DonorRole.DonorProfilePanel;
 import userinterface.FCAdminRole.ViewPantryItemsPanel;
 import userinterface.MainJFrame;
 import userinterface.NGORole.NGOWorkAreaPanel;
@@ -46,6 +47,7 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
         this.jsp = jsp;
        // lblwelname.setText(account.getEmployee().getName());
         setBG();
+        setLogo();
         logoutlogo();
     }
 
@@ -115,7 +117,7 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
                 lbllogoutMousePressed(evt);
             }
         });
-        MenubarPanel.add(lbllogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1458, 53, 43, 41));
+        MenubarPanel.add(lbllogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 40, 43, 41));
         MenubarPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(819, 46, -1, 57));
         MenubarPanel.add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 80, 60));
 
@@ -148,6 +150,20 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+      public void setLogo() {
+        try {
+            logoImage.setMinimumSize(new Dimension(100, 100));
+            logoImage.setPreferredSize(new Dimension(100, 100));
+            logoImage.setMaximumSize(new Dimension(100, 100));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
+
+            Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            logoImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void setBG() {
         try {
             LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
