@@ -47,7 +47,7 @@ public class DonorProfilePanel extends javax.swing.JPanel {
         DonName = userAcc.getEmployee().getName();
         populateFields();
         setBG();
-        setLogo();
+        
     }
 
     /**
@@ -93,7 +93,6 @@ public class DonorProfilePanel extends javax.swing.JPanel {
         lblDpwd2 = new javax.swing.JLabel();
         lblDpwd3 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
-        logoImage = new javax.swing.JLabel();
         LabelImage = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(2000, 1100));
@@ -290,7 +289,6 @@ public class DonorProfilePanel extends javax.swing.JPanel {
             }
         });
         add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, -1, -1));
-        add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 90, 80));
 
         LabelImage.setText(" ");
         add(LabelImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 700));
@@ -311,20 +309,7 @@ public class DonorProfilePanel extends javax.swing.JPanel {
         }
     }
     
-    public void setLogo() {
-        try {
-            logoImage.setMinimumSize(new Dimension(100, 100));
-            logoImage.setPreferredSize(new Dimension(100, 100));
-            logoImage.setMaximumSize(new Dimension(100, 100));
-            
-            Image img = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
-            
-            Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
-            logoImage.setIcon(new ImageIcon(newimg));
-        } catch (IOException ex) {
-            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
 
     private void txtDnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDnameFocusLost
         // TODO add your handling code here:
@@ -466,7 +451,6 @@ public class DonorProfilePanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDzip1;
     private javax.swing.JLabel lblUname;
     private javax.swing.JLabel lblUname1;
-    private javax.swing.JLabel logoImage;
     private javax.swing.JTextField txtDadd;
     private javax.swing.JTextField txtDcity;
     private javax.swing.JTextField txtDemail;
