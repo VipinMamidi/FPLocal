@@ -5,6 +5,7 @@
 package userinterface.NGORole;
 
 import Business.EcoSystem;
+import Business.NGO.NGO;
 import Business.NGOVolunteer.VolRequests;
 import Business.NGOVolunteer.Volunteer;
 import Business.Reqorder.Reqorder;
@@ -26,15 +27,22 @@ public class RequestsPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAcc;
-    String ngoName;
+    String ngoAName;
+    String ngoName="";
     public RequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
+        ngoAName= userAcc.getEmployee().getName();
+        ArrayList<NGO> ngolist = new ArrayList<NGO>();
+        for(NGO ng: ngolist){
+            if(ng.getNgoAgent().equals(ngoAName)){
+                ngoName=ng.getNgoName();
+            }
+        }
         populateRTable();
         populateVTable();
-        ngoName= userAcc.getEmployee().getName();
         //tblV.setVisible(false);
        // btnAvail.setVisible(false);
     }

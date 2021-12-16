@@ -369,10 +369,10 @@ public class ViewModifyPantryPanel extends javax.swing.JPanel {
     private void txtFCPPhnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFCPPhnoFocusLost
         // TODO add your handling code here:
         if(!(txtFCPPhno.getText().matches("^[0-9]*$")) || !(txtFCPPhno.getText().length()==10)) {
-            lblFCPPhno1.setText("Please enter a valid phone number");
+            lblFCPPhno.setText("Please enter a valid phone number");
         }
         else{
-            lblFCPPhno1.setText("");
+            lblFCPPhno.setText("");
 
         }
     }//GEN-LAST:event_txtFCPPhnoFocusLost

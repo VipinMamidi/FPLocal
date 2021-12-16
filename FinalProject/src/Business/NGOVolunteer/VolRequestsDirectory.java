@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author sowmyachinimilli
  */
 public class VolRequestsDirectory {
-    private ArrayList<VolRequests> vrList= new ArrayList<VolRequests>();
+    private ArrayList<VolRequests> vrList;
     public VolRequestsDirectory(){
         vrList = new ArrayList();
     }
