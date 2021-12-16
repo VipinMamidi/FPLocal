@@ -92,11 +92,12 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAddVolTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblAddVolTitle.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
+        lblAddVolTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblAddVolTitle.setText("Add Volunteer");
         add(lblAddVolTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 6, -1, -1));
 
-        lblVolname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolname.setText("Volunteer Name");
         add(lblVolname, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 104, -1, -1));
 
@@ -114,7 +115,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 137, -1));
 
-        lblVolPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolPhno.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolPhno.setText("Phone Number");
         add(lblVolPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 190, -1, -1));
 
@@ -127,7 +128,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 186, 137, -1));
 
-        lblVolAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolAdd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolAdd.setText("Address");
         add(lblVolAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 233, -1, -1));
 
@@ -140,7 +141,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 229, 137, -1));
 
-        lblVolCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolCity.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolCity.setText("City");
         add(lblVolCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 276, -1, -1));
 
@@ -148,7 +149,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         txtVolCity.setPreferredSize(new java.awt.Dimension(150, 25));
         add(txtVolCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 272, 137, -1));
 
-        lblVolState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolState.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolState.setText("State");
         add(lblVolState, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 319, -1, -1));
 
@@ -156,7 +157,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         txtVolState.setPreferredSize(new java.awt.Dimension(150, 25));
         add(txtVolState, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 315, 137, -1));
 
-        lblVolZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolZip.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolZip.setText("Zipcode");
         add(lblVolZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 362, -1, -1));
 
@@ -169,7 +170,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 358, 137, -1));
 
-        lblVolExp.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolExp.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolExp.setText("Volunteer Experience");
         add(lblVolExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 405, -1, -1));
 
@@ -187,7 +188,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 401, 137, -1));
 
-        lblVoluname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVoluname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVoluname.setText("Volunteer Username");
         add(lblVoluname, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 448, -1, -1));
 
@@ -195,7 +196,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         txtVoluname.setPreferredSize(new java.awt.Dimension(150, 25));
         add(txtVoluname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 444, 137, -1));
 
-        lblVolpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolpwd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolpwd.setText("Password");
         add(lblVolpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 491, -1, -1));
 
@@ -203,7 +204,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         txtVolpwd.setPreferredSize(new java.awt.Dimension(150, 25));
         add(txtVolpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 487, 137, -1));
 
-        lblVolcopwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolcopwd1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolcopwd1.setText("Confirm Password");
         add(lblVolcopwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 534, -1, -1));
 
@@ -225,7 +226,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         });
         add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 573, -1, -1));
 
-        lblVolid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolid.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolid.setText("Volunteer Id");
         add(lblVolid, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 61, -1, -1));
 
@@ -243,7 +244,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolid, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 57, 134, -1));
 
-        lblVolage.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolage.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolage.setText("Volunteer Age");
         add(lblVolage, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 147, -1, -1));
 

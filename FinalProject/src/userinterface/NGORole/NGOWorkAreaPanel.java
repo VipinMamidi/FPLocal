@@ -40,6 +40,7 @@ public class NGOWorkAreaPanel extends javax.swing.JPanel {
         this.userAcc =userAcc;
         this.jp = jp;
         this.jsp = jsp;
+        setLogo();
         setBG();
         logoutlogo();
 
@@ -58,15 +59,17 @@ public class NGOWorkAreaPanel extends javax.swing.JPanel {
         MenubarPanel = new javax.swing.JPanel();
         btnManagevol = new javax.swing.JButton();
         btnProfile = new javax.swing.JButton();
-        lblwelusername = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
         lbllogout = new javax.swing.JLabel();
+        logoImage = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         WorkAreaPanel = new javax.swing.JPanel();
         LabelImg = new javax.swing.JLabel();
 
         SplitPaneDon.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         MenubarPanel.setBackground(new java.awt.Color(255, 255, 255));
+        MenubarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnManagevol.setBackground(new java.awt.Color(105, 158, 208));
         btnManagevol.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -76,6 +79,7 @@ public class NGOWorkAreaPanel extends javax.swing.JPanel {
                 btnManagevolActionPerformed(evt);
             }
         });
+        MenubarPanel.add(btnManagevol, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
 
         btnProfile.setBackground(new java.awt.Color(105, 158, 208));
         btnProfile.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -85,58 +89,22 @@ public class NGOWorkAreaPanel extends javax.swing.JPanel {
                 btnProfileActionPerformed(evt);
             }
         });
-
-        lblwelusername.setBackground(new java.awt.Color(105, 158, 208));
-        lblwelusername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblwelusername.setText("NGO!");
+        MenubarPanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
 
         lblWelcomemsg.setBackground(new java.awt.Color(105, 158, 208));
-        lblWelcomemsg.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblWelcomemsg.setText("Welcome,");
+        lblWelcomemsg.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblWelcomemsg.setForeground(new java.awt.Color(51, 153, 255));
+        lblWelcomemsg.setText("Welcome NGO!");
+        MenubarPanel.add(lblWelcomemsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 6, -1, -1));
 
         lbllogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lbllogoutMousePressed(evt);
             }
         });
-
-        javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
-        MenubarPanel.setLayout(MenubarPanelLayout);
-        MenubarPanelLayout.setHorizontalGroup(
-            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenubarPanelLayout.createSequentialGroup()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(btnProfile)
-                        .addGap(106, 106, 106)
-                        .addComponent(btnManagevol)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
-                        .addContainerGap(388, Short.MAX_VALUE)
-                        .addComponent(lblWelcomemsg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblwelusername)
-                        .addGap(339, 339, 339)))
-                .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104))
-        );
-        MenubarPanelLayout.setVerticalGroup(
-            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenubarPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
-                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblwelusername)
-                            .addComponent(lblWelcomemsg))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnProfile)
-                            .addComponent(btnManagevol)))
-                    .addComponent(lbllogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
-        );
+        MenubarPanel.add(lbllogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 30, 43, 41));
+        MenubarPanel.add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 80, 60));
+        MenubarPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 6, -1, 110));
 
         SplitPaneDon.setLeftComponent(MenubarPanel);
 
@@ -169,6 +137,22 @@ public class NGOWorkAreaPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+         public void setLogo() {
+        try {
+            logoImage.setMinimumSize(new Dimension(100, 100));
+            logoImage.setPreferredSize(new Dimension(100, 100));
+            logoImage.setMaximumSize(new Dimension(100, 100));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
+
+            Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            logoImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+         
     private void btnManagevolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagevolActionPerformed
         // TODO add your handling code here:
         ManageVolunteerPanel objViewDon = new ManageVolunteerPanel(userProcessContainer,ecosystem,userAcc, jp, jsp);
@@ -234,8 +218,9 @@ public class NGOWorkAreaPanel extends javax.swing.JPanel {
     private javax.swing.JPanel WorkAreaPanel;
     private javax.swing.JButton btnManagevol;
     private javax.swing.JButton btnProfile;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblWelcomemsg;
     private javax.swing.JLabel lbllogout;
-    private javax.swing.JLabel lblwelusername;
+    private javax.swing.JLabel logoImage;
     // End of variables declaration//GEN-END:variables
 }
