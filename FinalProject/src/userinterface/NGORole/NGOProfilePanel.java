@@ -37,17 +37,19 @@ public class NGOProfilePanel extends javax.swing.JPanel {
     UserAccount userAcc;
     NGODirectory ngod;
     String NGOUname;
+    String ngoAname;
     boolean validateName = false, validatePhone =false, validateAdd =false, validate; 
     public NGOProfilePanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
-        populateFields();
+        ngoAname=userAcc.getEmployee().getName();
+        NGOUname = userAcc.getUsername();
         btnSubmit.setVisible(false);
         lblNGOpwd1.setVisible(false);
         txtNGOpwd1.setVisible(false);
-        NGOUname = userAcc.getUsername();
+        populateFields();
         setBG();
     }
 
@@ -424,6 +426,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
 
     private void populateFields() {
         for(NGO d: ecosystem.getNgoDir().getNgoList()){
+            if(d.getNgoAgent().equals(ngoAname)){
             txtNGOname.setText(d.getNgoName());
             txtNGOname.setEnabled(false);
             txtNGOphno.setText(d.getNgoPhno());
@@ -442,6 +445,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
             txtNGOuname.setEnabled(false);
             txtNGOpwd.setText(d.getNgoAccount().getPassword());
             txtNGOpwd.setEnabled(false);
+            }
         }
     }
     
