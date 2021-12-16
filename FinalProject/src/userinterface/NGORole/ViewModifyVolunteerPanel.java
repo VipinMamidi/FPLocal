@@ -10,6 +10,7 @@ import Business.Employee.Employee;
 import Business.NGOVolunteer.Volunteer;
 import Business.NGOVolunteer.VolunteerDirectory;
 import Business.UserAccount.UserAccount;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import userinterface.DonorRole.DonorProfilePanel;
 
@@ -46,6 +48,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         ngoName = userAcc.getEmployee().getName();
         populatevoltable();
         setBG();
+        makeTableTransparent1();
     }
 
     /**
@@ -94,7 +97,8 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAddVolTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblAddVolTitle.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
+        lblAddVolTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblAddVolTitle.setText("View/Modify Volunteer");
         add(lblAddVolTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 13, -1, -1));
 
@@ -111,7 +115,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblVolunteer);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 40, 972, 118));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 972, 118));
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -140,14 +144,14 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         lblWHname1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         add(lblWHname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 73, -1, -1));
 
-        lblvolid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblvolid.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblvolid.setText("Volunteer Id:");
         add(lblvolid, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 176, -1, -1));
 
         lblvolid1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         add(lblvolid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 176, -1, -1));
 
-        lblVolname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolname.setText("Volunteer Name");
         add(lblVolname, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 194, -1, -1));
 
@@ -165,7 +169,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolname, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 190, 137, -1));
 
-        lblVolPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolPhno.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolPhno.setText("Phone Number");
         add(lblVolPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 280, -1, -1));
 
@@ -178,7 +182,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 276, 137, -1));
 
-        lblVolAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolAdd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolAdd.setText("Address");
         add(lblVolAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 323, -1, -1));
 
@@ -191,7 +195,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 319, 137, -1));
 
-        lblVolCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolCity.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolCity.setText("City");
         add(lblVolCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 366, -1, -1));
 
@@ -199,11 +203,11 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         txtVolCity.setPreferredSize(new java.awt.Dimension(150, 25));
         add(txtVolCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 362, 137, -1));
 
-        lblVolState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolState.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolState.setText("State");
         add(lblVolState, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 409, -1, -1));
 
-        lblVolage.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolage.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolage.setText("Volunteer Age");
         add(lblVolage, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 237, -1, -1));
 
@@ -225,7 +229,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolState, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 405, 137, -1));
 
-        lblVolZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolZip.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolZip.setText("Zipcode");
         add(lblVolZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 452, -1, -1));
 
@@ -238,7 +242,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 448, 137, -1));
 
-        lblVolExp.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolExp.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolExp.setText("Volunteer Experience");
         add(lblVolExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 495, -1, -1));
 
@@ -256,7 +260,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         });
         add(txtVolExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 491, 137, -1));
 
-        lblVoluname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVoluname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVoluname.setText("Volunteer Username");
         add(lblVoluname, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 538, -1, -1));
 
@@ -264,7 +268,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         txtVoluname.setPreferredSize(new java.awt.Dimension(150, 25));
         add(txtVoluname, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 534, 137, -1));
 
-        lblVolpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblVolpwd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblVolpwd.setText("Password");
         add(lblVolpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 581, -1, -1));
 
@@ -274,7 +278,7 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
         add(lblVolZip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 457, -1, -1));
         add(lblVolPhno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 285, -1, -1));
         add(lblVolpwd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 586, -1, -1));
-        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 16, 1490, 970));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1500, 990));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -309,6 +313,21 @@ public class ViewModifyVolunteerPanel extends javax.swing.JPanel {
             LabelImg.setIcon(new ImageIcon(newimg));
         } catch (IOException ex) {
             Logger.getLogger(ViewModifyVolunteerPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+        public void makeTableTransparent1() {
+        tblVolunteer.setOpaque(false);
+        ((DefaultTableCellRenderer) tblVolunteer.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblVolunteer.setShowGrid(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(Color.WHITE);
+
+        for (int i = 0; i < tblVolunteer.getModel().getColumnCount(); i++) {
+            tblVolunteer.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
     }
     

@@ -47,6 +47,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
         ngoAname=userAcc.getEmployee().getName();
         NGOUname = userAcc.getUsername();
         btnSubmit.setVisible(false);
+        btnCancel.setVisible(false);
         lblNGOpwd1.setVisible(false);
         txtNGOpwd1.setVisible(false);
         populateFields();
@@ -95,6 +96,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
         lblNGOname1 = new javax.swing.JLabel();
         lblNGOpwd2 = new javax.swing.JLabel();
         lblNGOpwd3 = new javax.swing.JLabel();
+        btnCancel = new javax.swing.JButton();
         LabelImg = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -200,7 +202,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 513, -1, -1));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, -1, -1));
 
         btnEdit.setText("Edit Profile");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +210,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 btnEditActionPerformed(evt);
             }
         });
-        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 76, -1, -1));
+        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, -1, -1));
 
         lblUname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblUname.setText("Username");
@@ -283,6 +285,14 @@ public class NGOProfilePanel extends javax.swing.JPanel {
 
         lblNGOpwd3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         add(lblNGOpwd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 467, -1, -1));
+
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, -1, -1));
         add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, -4, 1690, 900));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -424,6 +434,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNGOpwd1ActionPerformed
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        disableFields();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
     private void populateFields() {
         for(NGO d: ecosystem.getNgoDir().getNgoList()){
             if(d.getNgoAgent().equals(ngoAname)){
@@ -460,6 +475,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
         txtNGOuname.setEnabled(true);
         txtNGOpwd.setEnabled(true);
         btnSubmit.setVisible(true);
+        btnCancel.setVisible(true);
         lblNGOpwd1.setVisible(true);
         txtNGOpwd1.setVisible(true);
     }
@@ -475,6 +491,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
         txtNGOuname.setEnabled(false);
         txtNGOpwd.setEnabled(false);
         btnSubmit.setVisible(false);
+        btnCancel.setVisible(false);
         lblNGOpwd1.setVisible(false);
         txtNGOpwd1.setVisible(false);
         lblNGOName1.setText("");
@@ -502,6 +519,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelImg;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblNGOAgent1;

@@ -81,6 +81,7 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
             }
         });
 
+        btnRequests.setBackground(new java.awt.Color(105, 158, 208));
         btnRequests.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnRequests.setText("Requests");
         btnRequests.addActionListener(new java.awt.event.ActionListener() {
