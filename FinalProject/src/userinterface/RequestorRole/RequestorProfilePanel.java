@@ -40,6 +40,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
         btnSubmit.setVisible(false);
+        btnCancel.setVisible(false);
         lblDpwd1.setVisible(false);
         txtDpwd1.setVisible(false);
         reqUname = userAcc.getUsername();
@@ -90,6 +91,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         lblUname1 = new javax.swing.JLabel();
         lblDpwd2 = new javax.swing.JLabel();
         lblDpwd3 = new javax.swing.JLabel();
+        btnCancel = new javax.swing.JButton();
         LabelImg = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,11 +105,11 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         });
         add(txtDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 180, 137, -1));
 
-        lblDadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDadd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDadd.setText("Address");
         add(lblDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 184, -1, -1));
 
-        lblDphno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDphno.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDphno.setText("Phone Number");
         add(lblDphno, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 141, -1, -1));
 
@@ -120,13 +122,14 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         });
         add(txtDname, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 91, 137, -1));
 
-        lblDName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDName.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDName.setText("Name");
         add(lblDName, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 95, -1, -1));
 
-        lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblDonProfileTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle.setText("My Food Cloud Profile");
-        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 34, -1, -1));
+        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
 
         txtDpwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDpwd1.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -137,7 +140,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         });
         add(txtDpwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 481, 137, -1));
 
-        lblDpwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDpwd1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDpwd1.setText("Confirm Password");
         add(lblDpwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 485, -1, -1));
 
@@ -150,7 +153,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         });
         add(txtDpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 438, 137, -1));
 
-        lblDpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDpwd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDpwd.setText("Password");
         add(lblDpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 442, -1, -1));
 
@@ -172,7 +175,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         });
         add(txtDphno, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 137, 137, -1));
 
-        lblUname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblUname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblUname.setText("Username");
         add(lblUname, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 399, -1, -1));
 
@@ -182,7 +185,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
                 btnEditActionPerformed(evt);
             }
         });
-        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 90, -1, -1));
+        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 530, -1, -1));
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +193,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, -1, -1));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, -1, -1));
 
         txtDemail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDemail.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -201,7 +204,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         });
         add(txtDemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 352, 137, -1));
 
-        lblDemail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDemail.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDemail.setText("Email Id");
         add(lblDemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 356, -1, -1));
 
@@ -214,7 +217,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         });
         add(txtDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 309, 137, -1));
 
-        lblDzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDzip.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDzip.setText("Zipcode");
         add(lblDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 313, -1, -1));
 
@@ -227,7 +230,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         });
         add(txtDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 266, 137, -1));
 
-        lblDstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDstate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDstate.setText("State");
         add(lblDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 270, -1, -1));
 
@@ -240,7 +243,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         });
         add(txtDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 223, 137, -1));
 
-        lblDcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDcity.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDcity.setText("City");
         add(lblDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 227, -1, -1));
 
@@ -273,7 +276,15 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
 
         lblDpwd3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         add(lblDpwd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(619, 481, -1, -1));
-        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1590, 790));
+
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1590, 800));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDaddFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDaddFocusLost
@@ -408,9 +419,16 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtDcityFocusLost
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        disableFields();
+        
+    }//GEN-LAST:event_btnCancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelImg;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblDName;
@@ -482,6 +500,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         txtDuname.setEnabled(true);
         txtDpwd.setEnabled(true);
         btnSubmit.setVisible(true);
+        btnCancel.setVisible(true);
         lblDpwd1.setVisible(true);
         txtDpwd1.setVisible(true);
     }
@@ -508,6 +527,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         txtDuname.setEnabled(false);
         txtDpwd.setEnabled(false);
         btnSubmit.setVisible(false);
+        btnCancel.setVisible(false);
         lblDpwd1.setVisible(false);
         txtDpwd1.setVisible(false);
         lblDName1.setText("");

@@ -7,6 +7,7 @@ package userinterface.RequestorRole;
 import Business.EcoSystem;
 import Business.Reqorder.Reqorder;
 import Business.UserAccount.UserAccount;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,6 +38,7 @@ public class ReqorderStatusPanel extends javax.swing.JPanel {
         this.userAcc = userAcc;
         populateTable();
         setBG();
+        makeTableTransparent();
     }
 
     /**
@@ -55,7 +58,8 @@ public class ReqorderStatusPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblDonProfileTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle.setText("My Food Cloud Requests");
         add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 14, -1, -1));
 
@@ -70,11 +74,36 @@ public class ReqorderStatusPanel extends javax.swing.JPanel {
                 "Request Id", "Pantry", "Quantity", "Order Type", "Status"
             }
         ));
+        tblReq.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblReqMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblReq);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 53, 1600, 153));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1010, 153));
         add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1600, 840));
     }// </editor-fold>//GEN-END:initComponents
+
+     public void makeTableTransparent() {
+        tblReq.setOpaque(false);
+        ((DefaultTableCellRenderer) tblReq.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblReq.setShowGrid(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(Color.WHITE);
+
+        for (int i = 0; i < tblReq.getModel().getColumnCount(); i++) {
+            tblReq.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+    }
+     
+    private void tblReqMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReqMousePressed
+        // TODO add your handling code here:
+        tblReq.setSelectionForeground(Color.BLUE);
+    }//GEN-LAST:event_tblReqMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

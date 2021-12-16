@@ -96,13 +96,14 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblDonProfileTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle.setText("Request Food");
-        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 16, -1, -1));
+        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, -1, -1));
 
-        lblDfdquan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDfdquan.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDfdquan.setText("Request for");
-        add(lblDfdquan, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 153, -1, -1));
+        add(lblDfdquan, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
         sdQuan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         sdQuan.setMajorTickSpacing(10);
@@ -111,10 +112,12 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         sdQuan.setAutoscrolls(true);
         add(sdQuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 145, -1, -1));
 
-        lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        lblDonProfileTitle1.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle1.setText("Delivery Address");
         add(lblDonProfileTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 110, -1, -1));
 
+        chkAdd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         chkAdd.setText("Same Address as in Profile");
         chkAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +126,7 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         });
         add(chkAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 150, -1, -1));
 
-        lblDadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDadd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDadd.setText("Address");
         add(lblDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 220, -1, -1));
 
@@ -136,7 +139,7 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         });
         add(txtDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 220, 137, -1));
 
-        lblDcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDcity.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDcity.setText("City");
         add(lblDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 280, -1, -1));
 
@@ -149,7 +152,7 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         });
         add(txtDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 270, 137, -1));
 
-        lblDstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDstate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDstate.setText("State");
         add(lblDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 320, -1, -1));
 
@@ -162,7 +165,7 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         });
         add(txtDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 320, 137, -1));
 
-        lblDzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDzip.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDzip.setText("Zipcode");
         add(lblDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 370, -1, -1));
 
@@ -175,9 +178,9 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         });
         add(txtDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 360, 137, -1));
 
-        lblDfdquan2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDfdquan2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDfdquan2.setText("Select city");
-        add(lblDfdquan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 249, -1, -1));
+        add(lblDfdquan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
 
         cbCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbCity.addActionListener(new java.awt.event.ActionListener() {
@@ -185,14 +188,14 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 cbCityActionPerformed(evt);
             }
         });
-        add(cbCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 245, -1, -1));
+        add(cbCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 245, 130, -1));
 
-        lblDfdquan3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDfdquan3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDfdquan3.setText("Select a nearest pantry");
         add(lblDfdquan3, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 297, -1, -1));
 
         cbWH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cbWH, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 297, -1, -1));
+        add(cbWH, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 297, 130, -1));
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSubmit.setText("Submit Request");
@@ -203,19 +206,19 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         });
         add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 430, -1, -1));
 
-        lblDfdquan1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblDfdquan1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDfdquan1.setText("Min 10");
         add(lblDfdquan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 185, -1, -1));
 
-        lblDfdquan4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblDfdquan4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDfdquan4.setText("Max 100");
         add(lblDfdquan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 185, -1, -1));
 
-        lblDfdquan5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblDfdquan5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDfdquan5.setText("persons");
         add(lblDfdquan5, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 154, -1, -1));
 
-        lblDfdquan6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDfdquan6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblDfdquan6.setText("Select delivery type");
         add(lblDfdquan6, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 344, -1, -1));
 
@@ -226,8 +229,8 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 cbDelActionPerformed(evt);
             }
         });
-        add(cbDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 340, -1, -1));
-        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1590, 840));
+        add(cbDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 120, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1600, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chkAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAddActionPerformed

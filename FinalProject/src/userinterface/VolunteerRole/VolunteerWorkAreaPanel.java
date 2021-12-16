@@ -55,11 +55,8 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
 
          if(ecosystem.getDonatDirectory()== null){
          ecosystem.setDonatDirectory(new DonationDirectory());
-
-        populatePickupTable();
-        populateDelTable();
-        
-        if (ecosystem.getReqorderDirectory() == null) {
+        }
+         if (ecosystem.getReqorderDirectory() == null) {
             ecosystem.setReqorderDirectory(new ReqorderDirectory());
         }
 
@@ -67,8 +64,11 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
         logoutlogo();
         makeTableTransparent();
         makeTableTransparent1();
-
-    }
+        setLogo();
+        
+        populatePickupTable();
+        populateDelTable();
+     
     }
 
     /**
@@ -109,6 +109,11 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
             }
         ));
         tblReqDel.setOpaque(false);
+        tblReqDel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblReqDelMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblReqDel);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 389, 1008, 153));
@@ -130,6 +135,11 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
             }
         ));
         tblDonPick.setOpaque(false);
+        tblDonPick.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblDonPickMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDonPick);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1008, 153));
@@ -183,7 +193,7 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
         });
         add(lbllogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 40, 40, 30));
         add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 80, 60));
-        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1580, 720));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1580, 790));
     }// </editor-fold>//GEN-END:initComponents
 
     public void setBG() {
@@ -224,8 +234,8 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
         tblDonPick.setOpaque(false);
         ((DefaultTableCellRenderer) tblDonPick.getDefaultRenderer(Object.class)).setOpaque(false);
         tblDonPick.setShowGrid(false);
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane2.setOpaque(false);
+        jScrollPane2.getViewport().setOpaque(false);
 
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setBackground(Color.WHITE);
@@ -247,6 +257,21 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
 
         for (int i = 0; i < tblReqDel.getModel().getColumnCount(); i++) {
             tblReqDel.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+    }
+    
+      public void setLogo() {
+        try {
+            logoImage.setMinimumSize(new Dimension(100, 100));
+            logoImage.setPreferredSize(new Dimension(100, 100));
+            logoImage.setMaximumSize(new Dimension(100, 100));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
+
+            Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            logoImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -355,6 +380,16 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
         } catch (IOException ex) {
         }
     }//GEN-LAST:event_lbllogoutMousePressed
+
+    private void tblDonPickMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDonPickMousePressed
+        // TODO add your handling code here:
+              tblDonPick.setSelectionForeground(Color.BLUE);
+    }//GEN-LAST:event_tblDonPickMousePressed
+
+    private void tblReqDelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReqDelMousePressed
+        // TODO add your handling code here:
+              tblReqDel.setSelectionForeground(Color.BLUE);
+    }//GEN-LAST:event_tblReqDelMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
