@@ -6,6 +6,7 @@ package userinterface.FCAdminRole;
 
 import Business.Donation.Donation;
 import Business.EcoSystem;
+import Business.FCWarehouse.FCWarehouse;
 import Business.NGOVolunteer.Volunteer;
 import Business.UserAccount.UserAccount;
 import java.awt.Color;
@@ -37,6 +38,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
     UserAccount userAcc;
     String volname;
     String WHname;
+    String city;
     public DonationRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -45,9 +47,16 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         String FCAname=userAcc.getEmployee().getName();
         System.out.println(FCAname);
         WHname= ecosystem.getFCWDirectory().getWHname(FCAname);
+        for(FCWarehouse f: ecosystem.getFCWDirectory().getFcwList()){
+            if(f.getFcwName().equals(WHname)){
+                city=f.getFcwCity();
+            }
+        }
         ArrayList<String> VolunteerList = new ArrayList();
         for (Volunteer vol : ecosystem.getVolDir().getVolunteerList()){
+            if(vol.getVolCity().equals(city)){
             VolunteerList.add(vol.getVolName());
+            }
         }
         cbVol.setModel(new DefaultComboBoxModel<String>(VolunteerList.toArray(new String[0])));
         populateTable();
@@ -218,6 +227,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
             }
         }
         JOptionPane.showMessageDialog(this, "Pickup Request Assigned to Volunteer Successfully!");
+        populateTable();
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void tblDonReqMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDonReqMousePressed

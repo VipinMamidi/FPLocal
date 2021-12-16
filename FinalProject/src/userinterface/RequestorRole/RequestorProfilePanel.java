@@ -39,12 +39,12 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
-        populateFields();
         btnSubmit.setVisible(false);
         lblDpwd1.setVisible(false);
         txtDpwd1.setVisible(false);
         reqUname = userAcc.getUsername();
         reqName = userAcc.getEmployee().getName();
+        populateFields();
         setBG();
     }
 
@@ -448,6 +448,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
 
     private void populateFields() {
         for(Requestor r: ecosystem.getReqDir().getReqAccList()){
+            if(r.getReqName().equals(reqName)){
             txtDname.setText(r.getReqName());
             txtDname.setEnabled(false);
             txtDphno.setText(r.getReqPhno());
@@ -466,6 +467,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
             txtDuname.setEnabled(false);
             txtDpwd.setText(r.getReqAccount().getUsername());
             txtDpwd.setEnabled(false);
+            }
         } 
     } 
 

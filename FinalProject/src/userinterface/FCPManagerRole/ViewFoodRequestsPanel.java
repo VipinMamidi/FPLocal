@@ -5,6 +5,7 @@
 package userinterface.FCPManagerRole;
 
 import Business.EcoSystem;
+import Business.FCPantry.FCPantry;
 import Business.NGOVolunteer.Volunteer;
 import Business.Reqorder.Reqorder;
 import Business.UserAccount.UserAccount;
@@ -34,11 +35,19 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     UserAccount userAcc;
     String volname;
+    String FCPname;
+    String FCPmgname;
     public ViewFoodRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
+        FCPmgname = userAcc.getEmployee().getName();
+        for(FCPantry fcp: ecosystem.getFCPDirectory().getFcpList()){
+            if(fcp.getFcpManager().equals(FCPmgname)){
+                 FCPname = fcp.getFcpName();
+            }
+        }
         populateTable();
          setBG();
          makeTableTransparent();
@@ -199,22 +208,18 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblFdReqs.getSelectedRow();
-        if(selectedRowIndex < 0){
-            JOptionPane.showMessageDialog(this, "Please select a request");
-            return;
+         String Reqid=txtDRid.getText();
+        for(Reqorder r: ecosystem.getReqorderDirectory().getReqOrderList()){
+            volname= cbVol.getSelectedItem().toString();
+            r.setReqVol(volname);
+            r.setReqOrderStatus("Assigned to Volunteer");
         }
-        DefaultTableModel model = (DefaultTableModel) tblFdReqs.getModel();
-        Reqorder selectedR = (Reqorder)model.getValueAt(selectedRowIndex, 0);
-        volname= cbVol.getSelectedItem().toString();
-        selectedR.setReqVol(cbVol.getSelectedItem().toString());
-        selectedR.setReqOrderStatus("Assigned to Volunteer");
         for(Volunteer v:ecosystem.getVolDir().getVolunteerList()){
             if(v.getVolName().equals(volname)){
                 v.setVolAvail("No");
             }
         }
-        JOptionPane.showMessageDialog(this, "Pickup Request Assigned to Volunteer Successfully!");
+        JOptionPane.showMessageDialog(this, "Delivery Assigned to Volunteer Successfully!");
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void tblFdReqsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFdReqsMousePressed
@@ -241,6 +246,7 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblFdReqs.getModel();
         model.setRowCount(0);
         for(Reqorder rq: ecosystem.getReqorderDirectory().getReqOrderList()){
+            if(rq.getReqPantryName().equals(FCPname)){
            Object[] row = new Object[5];
            row[0] =rq;
            row[1] =rq.getReqName();
@@ -248,6 +254,7 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
            row[3] =rq.getReqOrderType();
            row[4] =rq.getReqOrderStatus();
            model.addRow(row);
+            }
         } 
     }
 }

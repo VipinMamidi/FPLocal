@@ -39,14 +39,14 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
         this.jp = jp;
         this.jsp = jsp;
         name = userAccount.getEmployee().getName();
-        populatePickupTable();
-        populateDelTable();
-        if(ecosystem.getDonatDirectory()== null){
+         if(ecosystem.getDonatDirectory()== null){
          ecosystem.setDonatDirectory(new DonationDirectory());
         }
         if(ecosystem.getReqorderDirectory()== null){
          ecosystem.setReqorderDirectory( new ReqorderDirectory());
         }
+        populatePickupTable();
+        populateDelTable();
     }
 
     /**
@@ -328,6 +328,7 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblReqDel.getModel();
         model.setRowCount(0);
         for(Reqorder rq: ecosystem.getReqorderDirectory().getReqOrderList()){
+            if(rq.getReqVol().equals(userAccount.getEmployee().getName())){
            Object[] row = new Object[6];
            row[0] =rq;
            row[1] =rq.getReqName();
@@ -336,6 +337,7 @@ public class VolunteerWorkAreaPanel extends javax.swing.JPanel {
            row[4] =rq.getReqZip();
            row[5] =rq.getReqOrderStatus();
            model.addRow(row);
+            }
         }
     }
 }
